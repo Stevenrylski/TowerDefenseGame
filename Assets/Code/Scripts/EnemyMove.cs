@@ -21,18 +21,19 @@ public class EnemyMove : MonoBehaviour {
 	}
 
 	private void Update() {
-		if (Vector2.Distance(target.position, transform.position) <= 0.1f) {
-			pathIndex++;
+    if (Vector2.Distance(target.position, transform.position) <= 0.1f) {
+        pathIndex++;
 
-			if (pathIndex == LevelManager.main.path.Length) {
-				EnemySpawner.onEnemyDestroy.Invoke();
-				Destroy(gameObject);
-				return;
-			} else {
-				target = LevelManager.main.path[pathIndex];
-			}
-		}
-	}
+        if (pathIndex == LevelManager.main.path.Length) {
+            // Gegner hat das Ziel erreicht
+            LevelManager.main.LoseLife(); // Ein Leben abziehen
+            Destroy(gameObject); // Gegner zerstören
+            return;
+        } else {
+            target = LevelManager.main.path[pathIndex];
+        }
+    }
+}
 
 	private void FixedUpdate() {
 		Vector2 direction = (target.position - transform.position).normalized;

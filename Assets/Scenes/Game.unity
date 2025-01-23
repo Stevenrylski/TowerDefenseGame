@@ -229,6 +229,8 @@ MonoBehaviour:
   currency: 0
   lives: 3
   startingCurrency: 100
+  gameOverScreen: {fileID: 0}
+  livesText: {fileID: 0}
 --- !u!4 &30776144
 Transform:
   m_ObjectHideFlags: 0
