@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour {
     
@@ -9,12 +10,12 @@ public class LevelManager : MonoBehaviour {
     public Transform[] path;
 
     public int currency;
-    public int lives = 5; // Startleben
+    public int lives = 10; // Maximale Leben des Spielers
     [SerializeField] private int startingCurrency = 100;
 
     [Header("UI References")]
     [SerializeField] private GameObject gameOverScreen; // Canvas für Game Over
-    [SerializeField] private TMPro.TextMeshProUGUI livesText; // UI für Leben
+    [SerializeField] private Slider healthBar; // Slider für die Lebensanzeige
 
     private void Awake() {
         main = this;
@@ -22,7 +23,7 @@ public class LevelManager : MonoBehaviour {
 
     private void Start() {
         currency = startingCurrency;
-        UpdateLivesUI();
+        UpdateHealthBar(); // Slider auf maximale Leben setzen
     }
 
     public void IncreaseCurrency(int amount) {
@@ -43,16 +44,17 @@ public class LevelManager : MonoBehaviour {
         if (lives <= 0) return;
 
         lives--;
-        UpdateLivesUI();
+        UpdateHealthBar(); // Slider aktualisieren
 
         if (lives <= 0) {
             GameOver();
         }
     }
 
-    private void UpdateLivesUI() {
-        if (livesText != null)
-            livesText.text = "Lives: " + lives.ToString();
+    private void UpdateHealthBar() {
+        if (healthBar != null) {
+            healthBar.value = (float)lives / 10f; // Leben auf den Bereich 0–1 skalieren
+        }
     }
 
     private void GameOver() {
