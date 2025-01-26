@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
-    
     public static LevelManager main;
 
     public Transform startPoint;
@@ -14,7 +13,7 @@ public class LevelManager : MonoBehaviour {
     [SerializeField] private int startingCurrency = 100;
 
     [Header("UI References")]
-    [SerializeField] private GameObject gameOverScreen; // Canvas für Game GameOver
+    [SerializeField] private GameObject gameOverScreen; // Canvas für Game Over
     [SerializeField] private Slider healthBar; // Referenz zur Health Bar
 
     private void Awake() {
@@ -46,15 +45,19 @@ public class LevelManager : MonoBehaviour {
         lives--;
         UpdateHealthBar();
 
+        // Informiere den EnemySpawner, dass ein Feind verarbeitet wurde
+        EnemySpawner.onEnemyDestroy.Invoke();
+
         if (lives <= 0) {
             GameOver();
         }
     }
+
     private void UpdateHealthBar() {
-    if (healthBar != null) {
-        healthBar.value = (float)lives / 10f; // Leben in den Bereich 0 bis 1 umrechnen
+        if (healthBar != null) {
+            healthBar.value = (float)lives / 10f; // Leben in den Bereich 0 bis 1 umrechnen
+        }
     }
-}
 
     private void GameOver() {
         Debug.Log("Game Over");
