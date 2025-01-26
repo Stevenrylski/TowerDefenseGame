@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Home-icon-vlack_0: -2133908644524593011
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
