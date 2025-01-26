@@ -230,7 +230,7 @@ MonoBehaviour:
   lives: 10
   startingCurrency: 100
   gameOverScreen: {fileID: 0}
-  healthBar: {fileID: 715406012}
+  livesText: {fileID: 0}
 --- !u!4 &30776144
 Transform:
   m_ObjectHideFlags: 0
