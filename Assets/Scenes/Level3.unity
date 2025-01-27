@@ -422,7 +422,7 @@ MonoBehaviour:
   difficultyScalingFactor: 0.75
   enemiesPerSecondCap: 15
   youWinPanel: {fileID: 1128169332}
-  levelwaves: 2
+  levelwaves: 4
 --- !u!114 &30776146
 MonoBehaviour:
   m_ObjectHideFlags: 0
