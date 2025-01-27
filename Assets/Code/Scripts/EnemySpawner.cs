@@ -28,6 +28,7 @@ public class EnemySpawner : MonoBehaviour {
     private int enemiesLeftToSpawn;
     private float eps; // enemies Per second
     private bool isSpawning = false;
+    public GameObject youWinPanel;
 
     private void Awake() {
         onEnemyDestroy.AddListener(EnemyDestroyed);
@@ -76,6 +77,10 @@ public class EnemySpawner : MonoBehaviour {
     private void EndWave() {
         isSpawning = false;
         timeSinceLastSpawn = 0f;
+         if (currentWave == 2) {
+            youWinPanel.SetActive(true);
+            Time.timeScale = 0;
+        }
         currentWave++;
         UpdateWaveCounter(); // Aktualisiere den Wave Counter
         StartCoroutine(StartWave());
